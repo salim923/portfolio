@@ -1,1 +1,23 @@
-<p>navbar works!</p>
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="nav-content">
+      <a href="#home" class="logo">
+        <span class="logo-text">Portfolio</span>
+      </a>
+
+      <ul class="nav-links" [class.active]="isMobileMenuOpen">
+        <li><a href="#home" (click)="closeMenu()">Home</a></li>
+        <li><a href="#about" (click)="closeMenu()">About</a></li>
+        <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+        <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+        <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+      </ul>
+
+      <button class="mobile-toggle" (click)="toggleMobileMenu()">
+        <span [class.active]="isMobileMenuOpen"></span>
+        <span [class.active]="isMobileMenuOpen"></span>
+        <span [class.active]="isMobileMenuOpen"></span>
+      </button>
+    </div>
+  </div>
+</nav>

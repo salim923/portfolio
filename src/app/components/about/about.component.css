@@ -1,0 +1,231 @@
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .about-content {
+    gap: var(--space-12);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.text-block {
+  margin-bottom: var(--space-8);
+}
+
+.text-block h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.025em;
+}
+
+.text-block h3::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-2);
+}
+
+.text-block p {
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-lg);
+}
+
+.text-block p:last-child {
+  margin-bottom: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--gradient-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: translateX(-100%);
+  transition: transform var(--transition-slow);
+}
+
+.stat-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-200);
+}
+
+.stat-item:hover::before {
+  transform: translateX(0);
+}
+
+.stat-number {
+  display: block;
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-2);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-2xl);
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .about-img {
+    height: 400px;
+  }
+}
+
+.floating-element {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal);
+}
+
+.floating-element:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+.floating-element i {
+  font-size: var(--font-size-2xl);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.floating-element:nth-child(1) {
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.floating-element:nth-child(3) {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-3xl);
+  opacity: 0.1;
+  z-index: 1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Download button styling */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-slow);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary i {
+  margin-right: var(--space-2);
+  transition: transform var(--transition-normal);
+}
+
+.btn-primary:hover i {
+  transform: translateY(-2px);
+}

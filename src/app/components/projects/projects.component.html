@@ -1,11 +1,66 @@
-<div class="grid md:grid-cols-2 gap-6 p-6">
-  <div class="bg-white shadow-lg rounded-xl p-4">
-    <img src="assets/pfe.png" alt="PFE Project" class="rounded-md mb-4">
-    <h2 class="text-xl font-bold">PFE - Car Maintenance Platform</h2>
-    <p class="text-gray-600">
-      A web platform for intelligent car maintenance scheduling using Angular, .NET, SQL Server, and Google AI.
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">
+      Here are some of my recent projects that showcase my skills and experience
     </p>
-    <a href="https://github.com/yourusername/pfe" target="_blank"
-       class="text-blue-500 font-semibold">View on GitHub</a>
+
+    <div class="filter-buttons">
+      <button
+        class="filter-btn"
+        [class.active]="activeFilter === 'all'"
+        (click)="filterProjects('all')"
+      >
+        All
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="activeFilter === 'web'"
+        (click)="filterProjects('web')"
+      >
+        Web Apps
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="activeFilter === 'mobile'"
+        (click)="filterProjects('mobile')"
+      >
+        Mobile
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="activeFilter === 'fullstack'"
+        (click)="filterProjects('fullstack')"
+      >
+        Full Stack
+      </button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of filteredProjects">
+        <div class="project-image">
+          <img [src]="project.image" [alt]="project.title">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a [href]="project.liveUrl" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a [href]="project.githubUrl" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+          <div class="project-tech">
+            <span class="tech-tag" *ngFor="let tech of project.technologies">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

@@ -1,1 +1,38 @@
-<p>skills works!</p>
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-subtitle">
+      Here are the technologies and tools I work with to bring ideas to life
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category" *ngFor="let category of skillCategories">
+        <div class="category-header">
+          <i [class]="category.icon"></i>
+          <h3>{{ category.name }}</h3>
+        </div>
+        <div class="skills-list">
+          <div class="skill-item" *ngFor="let skill of category.skills">
+            <div class="skill-info">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-level">{{ skill.level }}%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" [style.width.%]="skill.level"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-section">
+      <h3>Tools & Platforms</h3>
+      <div class="tools-grid">
+        <div class="tool-item" *ngFor="let tool of tools">
+          <i [class]="tool.icon"></i>
+          <span>{{ tool.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

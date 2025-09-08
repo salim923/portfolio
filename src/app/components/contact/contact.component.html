@@ -1,1 +1,152 @@
-<p>contact works!</p>
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-subtitle">
+      Have a project in mind? Let's discuss how we can work together
+    </p>
+
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Let's talk about everything!</h3>
+        <p>
+          Don't like forms? Send me an email. 👋
+        </p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="method-info">
+              <h4>Email</h4>
+              <p>ferchichisalim599&#64;gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="method-info">
+              <h4>Phone</h4>
+              <p>(+216) 28 602 124</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="method-info">
+              <h4>Location</h4>
+              <p>Tunisia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://dribbble.com" target="_blank" class="social-link">
+            <i class="fab fa-dribbble"></i>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="formData.name"
+            required
+            #name="ngModel"
+            [class.error]="name.invalid && name.touched"
+          >
+          <div class="error-message" *ngIf="name.invalid && name.touched">
+            Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="formData.email"
+            required
+            email
+            #email="ngModel"
+            [class.error]="email.invalid && email.touched"
+          >
+          <div class="error-message" *ngIf="email.invalid && email.touched">
+            <span *ngIf="email.errors?.['required']">Email is required</span>
+            <span *ngIf="email.errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            [(ngModel)]="formData.subject"
+            required
+            #subject="ngModel"
+            [class.error]="subject.invalid && subject.touched"
+          >
+          <div class="error-message" *ngIf="subject.invalid && subject.touched">
+            Subject is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            [(ngModel)]="formData.message"
+            required
+            #message="ngModel"
+            [class.error]="message.invalid && message.touched"
+          ></textarea>
+          <div class="error-message" *ngIf="message.invalid && message.touched">
+            Message is required
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary submit-btn"
+          [disabled]="contactForm.invalid || isSubmitting"
+        >
+          <span *ngIf="!isSubmitting">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </span>
+          <span *ngIf="isSubmitting">
+            <i class="fas fa-spinner fa-spin"></i>
+            Sending...
+          </span>
+        </button>
+
+        <div class="success-message" *ngIf="showSuccessMessage">
+          <i class="fas fa-check-circle"></i>
+          Thank you! Your message has been sent successfully.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-
+export class HomeComponent implements OnInit {
+  ngOnInit(): void {
+    const elements = document.querySelectorAll(".fade-in")
+    elements.forEach((el, index) => {
+      ;(el as HTMLElement).style.animationDelay = `${index * 0.2}s`
+    })
+  }
 }
